@@ -1,0 +1,68 @@
+
+/*
+
+// Java supports polymorphism, the property of an object to take on many different forms.
+
+
+a Java object may be accessed using a reference with the same type as the object, 
+a reference that is a superclass of the object, 
+or a reference that defines an interface the object implements, either directly or through a superclass.
+
+object can be accessed using
+- reference with the same type as the object
+- reference that is super class of the object
+- reference that defines an interface that the object implements (directly or indirectly through a superclass)
+
+BUT
+
+Once the object has been assigned a new reference type, only the methods and variables
+available to that reference type are callable on the object without an explicit cast. 
+that means they loose they original callable references as well
+
+
+public static void main(String[] args) {
+			Lemur lemur = new Lemur();
+			System.out.println(lemur.age);
+
+			HasTail hasTail = lemur;
+			System.out.println(hasTail.isTailStriped());
+
+			Primate primate = lemur;
+			System.out.println(primate.hasHair());
+
+			}
+}
+
+public class Lemur extends Primate implements HasTail {
+public boolean isTailStriped() {
+return false;
+}
+
+Most Important rule
+	We can summarize this principle with the following two rules:
+	-- 1. The type of the object determines which properties exist within the object in memory.
+	--2. The type of the reference to the object determines which methods and variables are
+		accessible to the Java program.
+		
+		
+		Casting rules
+		Here are some basic rules to keep in mind when casting variables:
+			1. Casting an object from a subclass to a superclass doesn’t require an explicit cast.
+			2. Casting an object from a superclass to a subclass requires an explicit cast.
+			3. The compiler will not allow casts to unrelated types.
+			4. Even when the code compiles without issue, an exception may be thrown at runtime if
+			the object being cast is not actually an instance of that class.
+			
+	
+	The most important feature of polymorphism—and one of the primary reasons we have
+	class structure at all—is to support virtual methods. A virtual method is a method in which
+	the specific implementation is not determined until runtime.
+	
+	
+	In fact, all non-final, nonstatic, and non-private Java methods are considered virtual methods, 
+	since any of them can be overridden at runtime.
+	
+	By combining your understanding of polymorphism with method overriding, you see
+	that objects may be interpreted in vastly different ways at runtime, especially in methods
+	defined in the superclasses of the objects.
+*/

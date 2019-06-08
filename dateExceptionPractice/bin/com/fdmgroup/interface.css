@@ -1,0 +1,108 @@
+/* Java Interfaces
+
+Java is single inheritance language and interfaces is a mechanism using which we can have a class implementing behaviour from 
+multiple interfaces. Although Java doesn’t allow multiple inheritance, it does allow classes to implement any number of interfaces.
+
+It may be helpful to think of an interface as a specialized kind of abstract class, since it 
+shares many of the same properties and rules as an abstract class.
+
+An interface is an abstract data type that defines a list of abstract public methods that any class implementing 
+the interface must provide. An interface can also include a list of constant variables and default methods
+
+
+*** with the declaration of interface
+
+- abstract (keyword is assumed) while declaring interface as under:
+- public abstract (keyword is assumed) while declaring methods inside interface:
+- public static final keywords (assumed) while declaring variables inside interfaces:
+
+
+public abstract interface LondonBridge{
+
+public static final int MINIMUM_DEPTH = 2;
+public abstract int getMaximumDepth();
+
+}
+
+*** how to implement multiple interfaces (seperated by commma)
+
+public class Elephant implements WalksOnFourLegs, HasTrunk, Herbivore {
+// the concrete class Elephant has to define all abstract methods specified within WalksOnFourLegs, HasTrunk, Herbivore interfaces
+}
+
+*/
+
+
+
+/* 
+
+abstract (keyword to use extends) whereas in case of interface (keyword to use implements)
+all methods within interfaces are abstract while an abstract class may have non-abstract methods
+variables are public static final inside interfaces though this may be not be case with abstract class
+
+A concrete class may extend only one abstract class but it can implement any number of interfaces3
+
+
+same rule as abstract class
+
+1. Interfaces cannot be instantiated directly.
+2. An interface is not required to have any methods.
+3. An interface may not be marked as final.
+
+All top-level interfaces are assumed to have public or default access, and they must
+include the abstract modifier in their definition.
+
+All non-default methods in an interface are assumed to have the modifiers abstract
+and public in their definition.
+
+The first concrete class that implements an interface, or extends an abstract class that implements an interface, 
+must provide an implementation for all of the inherited abstract methods.
+
+
+It is not possible in Java to define two methods in a class with 
+the same name and input parameters but different return types.
+
+
+If a class or interface implementing from conflicting interfaces then the compiler will throw an exception
+
+
+- Interface variables are public static final by assumptions
+- must initialise while declaring
+- variables in interfaces are constant essentially
+
+public static String TYPE; // error because not initialised
+
+we may specify method with DEFAULT keyword and implementation within interfaces which the concrete class may not be forced to 
+implement and they can override if required as under
+
+public default double getTemperature() {
+return 10.0;
+}
+
+	// the default method can only be in interface not in class or abstract class
+	// the default method must provide implementation
+	// the default method would be public (not assumed abstract or final or static)
+	
+	
+	You can see that having a class that implements or inherits two duplicate default methods
+	forces the class to implement a new version of the method, or the code will not compile.
+	This rule holds true even for abstract classes that implement multiple interfaces, because
+	the default method could be called in a concrete method within the abstract class.
+	
+	A static method defined in an interface is not inherited in any classes that implement the interface.
+	have to use reference to the interface name for accessing static method of interface
+	
+	// Difference between static and default within interface methods
+	a class that implements two interfaces containing static methods with the same signature will still compile at runtime, 
+	because the static methods are not inherited by the subclass and must be accessed with a reference to the interface name.
+	
+	
+	public void method(Runner runner){}
+	/*Runner r1 = new Runner();
+	r1.method(null);*/
+
+	/* we can pass null reference as well when the method expects a reference/object 
+
+*/
+
+
